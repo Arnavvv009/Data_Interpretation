@@ -1,0 +1,3147 @@
+/* =========================================================================
+   DATA & GRAPH QUESTION DATA
+   Deterministic Grade 7 "Data Interpretation & Misleading Graphs" questions
+   across 10 themed worlds (10 questions per world = 100 total questions).
+   ========================================================================= */
+
+export const WESTERN_NAMES = [
+  "Leo", "Emma", "Alex", "Oliver", "Sophia", "Jack", "Maya", "Lucas",
+  "Ethan", "Chloe", "Noah", "Liam", "Harper", "Ava", "Mason", "Ella",
+  "James", "Mia", "Logan", "Charlotte"
+];
+
+export const PRACTICE_WORLDS = [
+  { id: 0, name: "Lunchbox Bar Charts", icon: "🍱", range: "Q1–10", difficulty: 1, archetypes: ["bar_read"] },
+  { id: 1, name: "Weather Line Graphs", icon: "🌦️", range: "Q11–20", difficulty: 1, archetypes: ["line_read"] },
+  { id: 2, name: "Favorite Color Pie Charts", icon: "🎨", range: "Q21–30", difficulty: 2, archetypes: ["pie_read", "pie_percent_to_count"] },
+  { id: 3, name: "Sports Stats Arena", icon: "🏀", range: "Q31–40", difficulty: 2, archetypes: ["mean"] },
+  { id: 4, name: "Game Score Range", icon: "🎯", range: "Q41–50", difficulty: 2, archetypes: ["range"] },
+  { id: 5, name: "Truncated Tower", icon: "🏗️", range: "Q51–60", difficulty: 3, archetypes: ["trick_truncated"] },
+  { id: 6, name: "Scale Scramble Lab", icon: "🧪", range: "Q61–70", difficulty: 3, archetypes: ["trick_scale"] },
+  { id: 7, name: "Timeline Trickster", icon: "🕰️", range: "Q71–80", difficulty: 3, archetypes: ["trick_cherry"] },
+  { id: 8, name: "Compare-o-Matic", icon: "⚖️", range: "Q81–90", difficulty: 4, archetypes: ["compare_misleading"] },
+  { id: 9, name: "Graph Detective HQ", icon: "🕵️", range: "Q91–100", difficulty: 4, archetypes: ["bar_read", "line_read", "pie_read", "mean", "range", "trick_truncated", "trick_scale", "trick_cherry", "compare_misleading"] }
+];
+
+export const DETERMINISTIC_QUESTIONS = [
+  {
+    "worldIndex": 0,
+    "qIndex": 0,
+    "prompt": "Leo recorded the lunchbox items sold today: 25 Apples, 42 Sandwiches, 18 Granola boxes, 35 Juice boxes, and 30 Carrots. Looking at the chart, how many Sandwiches were recorded?",
+    "options": [
+      "42 boxes",
+      "25 boxes",
+      "35 boxes",
+      "18 boxes"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Apples",
+        "Sandwiches",
+        "Granola",
+        "Juice",
+        "Carrots"
+      ],
+      "data": [
+        25,
+        42,
+        18,
+        35,
+        30
+      ],
+      "unit": "boxes",
+      "highlightIndex": 1
+    },
+    "explanation": "Read straight up from Sandwiches to the top of its bar, then across to the scale: 42 boxes."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 1,
+    "prompt": "Emma made a bar chart of club sign-ups: 15 Soccer, 28 Basketball, 22 Swim, 12 Chess, and 19 Track. How many students signed up for Basketball?",
+    "options": [
+      "28 sign-ups",
+      "15 sign-ups",
+      "22 sign-ups",
+      "12 sign-ups"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Soccer",
+        "Basketball",
+        "Swim",
+        "Chess",
+        "Track"
+      ],
+      "data": [
+        15,
+        28,
+        22,
+        12,
+        19
+      ],
+      "unit": "sign-ups",
+      "highlightIndex": 1
+    },
+    "explanation": "The bar for Basketball reaches 28 on the vertical scale."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 2,
+    "prompt": "Alex tracked library books borrowed this week: 14 on Monday, 22 on Tuesday, 35 on Wednesday, 28 on Thursday, and 19 on Friday. How many books were borrowed on Wednesday?",
+    "options": [
+      "35 books",
+      "22 books",
+      "28 books",
+      "14 books"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "data": [
+        14,
+        22,
+        35,
+        28,
+        19
+      ],
+      "unit": "books",
+      "highlightIndex": 2
+    },
+    "explanation": "Locate Wednesday on the horizontal axis and read up to the top of the bar: 35 books."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 3,
+    "prompt": "Oliver surveyed students per class: 24 in Math, 30 in Science, 18 in Art, 22 in History, and 26 in Gym. How many students are in Art class?",
+    "options": [
+      "18 students",
+      "24 students",
+      "30 students",
+      "22 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Math",
+        "Science",
+        "Art",
+        "History",
+        "Gym"
+      ],
+      "data": [
+        24,
+        30,
+        18,
+        22,
+        26
+      ],
+      "unit": "students",
+      "highlightIndex": 2
+    },
+    "explanation": "The Art bar reaches 18 on the scale."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 4,
+    "prompt": "Sophia tracked snack sales: 40 Fruit cups, 55 Granola bars, 32 Pretzels, 48 Juice boxes, and 20 Yogurt cups. How many Granola bars were sold?",
+    "options": [
+      "55 boxes",
+      "40 boxes",
+      "32 boxes",
+      "48 boxes"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Fruit",
+        "Granola",
+        "Pretzels",
+        "Juice",
+        "Yogurt"
+      ],
+      "data": [
+        40,
+        55,
+        32,
+        48,
+        20
+      ],
+      "unit": "boxes",
+      "highlightIndex": 1
+    },
+    "explanation": "The Granola bars column extends up to 55."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 5,
+    "prompt": "Jack logged pet choices: 34 Dogs, 28 Cats, 15 Fish, 12 Birds, and 8 Hamsters. How many students chose Dogs?",
+    "options": [
+      "34 students",
+      "28 students",
+      "15 students",
+      "12 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Dogs",
+        "Cats",
+        "Fish",
+        "Birds",
+        "Hamsters"
+      ],
+      "data": [
+        34,
+        28,
+        15,
+        12,
+        8
+      ],
+      "unit": "students",
+      "highlightIndex": 0
+    },
+    "explanation": "The Dogs bar is the tallest at 34 students."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 6,
+    "prompt": "Maya counted cafeteria meals: 45 Pizza slices, 38 Tacos, 25 Salads, 50 Pasta bowls, and 15 Burgers. How many Tacos were served?",
+    "options": [
+      "38 meals",
+      "45 meals",
+      "25 meals",
+      "50 meals"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Pizza",
+        "Tacos",
+        "Salad",
+        "Pasta",
+        "Burgers"
+      ],
+      "data": [
+        45,
+        38,
+        25,
+        50,
+        15
+      ],
+      "unit": "meals",
+      "highlightIndex": 1
+    },
+    "explanation": "Read across from the top of the Tacos bar to find 38."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 7,
+    "prompt": "Lucas tracked recycling items: 60 Plastic bottles, 45 Aluminum cans, 30 Paper boxes, and 50 Glass jars. How many Aluminum cans were collected?",
+    "options": [
+      "45 items",
+      "60 items",
+      "30 items",
+      "50 items"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Plastic",
+        "Aluminum",
+        "Paper",
+        "Glass"
+      ],
+      "data": [
+        60,
+        45,
+        30,
+        50
+      ],
+      "unit": "items",
+      "highlightIndex": 1
+    },
+    "explanation": "The Aluminum cans bar reaches 45 on the scale."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 8,
+    "prompt": "Chloe logged sports equipment: 18 Soccer balls, 24 Basketballs, 12 Footballs, and 30 Tennis rackets. How many Tennis rackets are in stock?",
+    "options": [
+      "30 items",
+      "18 items",
+      "24 items",
+      "12 items"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Soccer",
+        "Basketball",
+        "Football",
+        "Tennis"
+      ],
+      "data": [
+        18,
+        24,
+        12,
+        30
+      ],
+      "unit": "items",
+      "highlightIndex": 3
+    },
+    "explanation": "The Tennis rackets bar goes up to 30."
+  },
+  {
+    "worldIndex": 0,
+    "qIndex": 9,
+    "prompt": "Ethan counted musical instruments: 16 Violins, 22 Flutes, 14 Drums, 20 Guitars, and 28 Trumpets. How many Trumpets were counted?",
+    "options": [
+      "28 instruments",
+      "16 instruments",
+      "22 instruments",
+      "20 instruments"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Violin",
+        "Flute",
+        "Drums",
+        "Guitar",
+        "Trumpet"
+      ],
+      "data": [
+        16,
+        22,
+        14,
+        20,
+        28
+      ],
+      "unit": "instruments",
+      "highlightIndex": 4
+    },
+    "explanation": "Read up to the top of the Trumpets bar at 28."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 0,
+    "prompt": "Liam tracked daily temperatures this week: 18°C on Monday, 21°C on Tuesday, 19°C on Wednesday, 25°C on Thursday, and 23°C on Friday. What was the temperature on Thursday?",
+    "options": [
+      "25 degrees Celsius",
+      "21 degrees Celsius",
+      "19 degrees Celsius",
+      "23 degrees Celsius"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "data": [
+        18,
+        21,
+        19,
+        25,
+        23
+      ],
+      "unit": "°C",
+      "highlightIndex": 3
+    },
+    "explanation": "The point above Thursday sits at 25 degrees Celsius on the scale."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 1,
+    "prompt": "Harper measured sunflower growth: 12 cm in Week 1, 18 cm in Week 2, 27 cm in Week 3, 35 cm in Week 4, and 42 cm in Week 5. By how much did the sunflower grow from Week 2 to Week 3?",
+    "options": [
+      "9 cm",
+      "6 cm",
+      "17 cm",
+      "18 cm"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Wk1",
+        "Wk2",
+        "Wk3",
+        "Wk4",
+        "Wk5"
+      ],
+      "data": [
+        12,
+        18,
+        27,
+        35,
+        42
+      ],
+      "unit": "cm",
+      "highlightIndex": 2
+    },
+    "explanation": "Subtract Week 2 (18 cm) from Week 3 (27 cm): 27 minus 18 equals 9 cm."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 2,
+    "prompt": "Ava recorded savings jar totals: $15 in Week 1, $25 in Week 2, $40 in Week 3, $55 in Week 4, and $75 in Week 5. What was the total saved in Week 4?",
+    "options": [
+      "55 dollars",
+      "40 dollars",
+      "75 dollars",
+      "25 dollars"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Wk1",
+        "Wk2",
+        "Wk3",
+        "Wk4",
+        "Wk5"
+      ],
+      "data": [
+        15,
+        25,
+        40,
+        55,
+        75
+      ],
+      "unit": "$",
+      "highlightIndex": 3
+    },
+    "explanation": "Find Week 4 on the horizontal axis and read up to the dot at 55 dollars."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 3,
+    "prompt": "Mason tracked ocean water depth: 10 meters at Station 1, 16 meters at Station 2, 14 meters at Station 3, and 22 meters at Station 4. What was the depth at Station 3?",
+    "options": [
+      "14 meters",
+      "10 meters",
+      "16 meters",
+      "22 meters"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Stn1",
+        "Stn2",
+        "Stn3",
+        "Stn4"
+      ],
+      "data": [
+        10,
+        16,
+        14,
+        22
+      ],
+      "unit": "m",
+      "highlightIndex": 2
+    },
+    "explanation": "The dot for Station 3 aligns with 14 meters."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 4,
+    "prompt": "Ella logged daily wind speed: 12 km/h on Day 1, 19 km/h on Day 2, 15 km/h on Day 3, and 24 km/h on Day 4. How much did the wind speed increase between Day 3 and Day 4?",
+    "options": [
+      "9 km/h",
+      "7 km/h",
+      "12 km/h",
+      "5 km/h"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Day1",
+        "Day2",
+        "Day3",
+        "Day4"
+      ],
+      "data": [
+        12,
+        19,
+        15,
+        24
+      ],
+      "unit": "km/h",
+      "highlightIndex": 3
+    },
+    "explanation": "Subtract Day 3 (15) from Day 4 (24): 24 minus 15 equals 9 km/h."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 5,
+    "prompt": "James recorded hourly rainfall: 4 mm at 1 PM, 9 mm at 2 PM, 15 mm at 3 PM, and 8 mm at 4 PM. What was the rainfall reading at 3 PM?",
+    "options": [
+      "15 mm",
+      "9 mm",
+      "8 mm",
+      "4 mm"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "1PM",
+        "2PM",
+        "3PM",
+        "4PM"
+      ],
+      "data": [
+        4,
+        9,
+        15,
+        8
+      ],
+      "unit": "mm",
+      "highlightIndex": 2
+    },
+    "explanation": "The dot at 3 PM sits at 15 mm."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 6,
+    "prompt": "Mia tracked plant height over five days: 5 cm, 8 cm, 12 cm, 17 cm, and 23 cm. What was the height on Day 5?",
+    "options": [
+      "23 cm",
+      "17 cm",
+      "12 cm",
+      "8 cm"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Day1",
+        "Day2",
+        "Day3",
+        "Day4",
+        "Day5"
+      ],
+      "data": [
+        5,
+        8,
+        12,
+        17,
+        23
+      ],
+      "unit": "cm",
+      "highlightIndex": 4
+    },
+    "explanation": "Read the value for Day 5 directly from the line graph: 23 cm."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 7,
+    "prompt": "Logan monitored dough temperature: 20°C at 8 AM, 24°C at 9 AM, 30°C at 10 AM, and 35°C at 11 AM. By how much did the temperature rise from 9 AM to 10 AM?",
+    "options": [
+      "6 degrees Celsius",
+      "4 degrees Celsius",
+      "10 degrees Celsius",
+      "5 degrees Celsius"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "8AM",
+        "9AM",
+        "10AM",
+        "11AM"
+      ],
+      "data": [
+        20,
+        24,
+        30,
+        35
+      ],
+      "unit": "°C",
+      "highlightIndex": 2
+    },
+    "explanation": "30 degrees at 10 AM minus 24 degrees at 9 AM equals a 6 degree rise."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 8,
+    "prompt": "Charlotte tracked trail elevation: 150 m at Start, 220 m at Checkpoint 1, 180 m at Checkpoint 2, and 290 m at Finish. What was the elevation at Checkpoint 2?",
+    "options": [
+      "180 meters",
+      "220 meters",
+      "150 meters",
+      "290 meters"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Start",
+        "CP1",
+        "CP2",
+        "Finish"
+      ],
+      "data": [
+        150,
+        220,
+        180,
+        290
+      ],
+      "unit": "m",
+      "highlightIndex": 2
+    },
+    "explanation": "The point at Checkpoint 2 sits at 180 meters."
+  },
+  {
+    "worldIndex": 1,
+    "qIndex": 9,
+    "prompt": "Leo tracked heart rate: 80 bpm at min 1, 110 at min 2, 145 at min 3, 160 at min 4, and 130 at min 5. By how much did heart rate drop from min 4 to min 5?",
+    "options": [
+      "30 bpm",
+      "15 bpm",
+      "45 bpm",
+      "20 bpm"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Min1",
+        "Min2",
+        "Min3",
+        "Min4",
+        "Min5"
+      ],
+      "data": [
+        80,
+        110,
+        145,
+        160,
+        130
+      ],
+      "unit": "bpm",
+      "highlightIndex": 4
+    },
+    "explanation": "Minute 4 was 160 bpm and Minute 5 was 130 bpm: 160 minus 130 equals 30 bpm."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 0,
+    "prompt": "Noah surveyed 200 students about their favorite color: 35% chose Blue, 25% chose Red, 28% chose Green, and 12% chose Yellow. What percentage chose Blue?",
+    "options": [
+      "35 percent",
+      "25 percent",
+      "28 percent",
+      "12 percent"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Blue",
+          "value": 35,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Red",
+          "value": 25,
+          "color": "#f43f5e"
+        },
+        {
+          "label": "Green",
+          "value": 28,
+          "color": "#4ade80"
+        },
+        {
+          "label": "Yellow",
+          "value": 12,
+          "color": "#facc15"
+        }
+      ]
+    },
+    "explanation": "The Blue slice represents 35 percent of the pie chart."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 1,
+    "prompt": "Emma surveyed 200 students about their favorite pet: 40% chose Dogs, 30% chose Cats, 20% chose Fish, and 10% chose Birds. How many students chose Dogs?",
+    "options": [
+      "80 students",
+      "40 students",
+      "60 students",
+      "100 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Dogs",
+          "value": 40,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Cats",
+          "value": 30,
+          "color": "#f472b6"
+        },
+        {
+          "label": "Fish",
+          "value": 20,
+          "color": "#4ade80"
+        },
+        {
+          "label": "Birds",
+          "value": 10,
+          "color": "#facc15"
+        }
+      ]
+    },
+    "explanation": "40 percent of 200 students equals 40 divided by 100 times 200, which is 80 students."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 2,
+    "prompt": "Sophia surveyed 100 classmates about lunch choices: 45% Pizza, 25% Tacos, 20% Burgers, and 10% Salad. What percentage chose Tacos?",
+    "options": [
+      "25 percent",
+      "45 percent",
+      "20 percent",
+      "10 percent"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Pizza",
+          "value": 45,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Tacos",
+          "value": 25,
+          "color": "#facc15"
+        },
+        {
+          "label": "Burgers",
+          "value": 20,
+          "color": "#f43f5e"
+        },
+        {
+          "label": "Salad",
+          "value": 10,
+          "color": "#4ade80"
+        }
+      ]
+    },
+    "explanation": "The Tacos section takes up 25 percent of the circle."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 3,
+    "prompt": "Jack surveyed 300 students on favorite season: 40% Summer, 30% Fall, 20% Spring, and 10% Winter. How many students chose Summer?",
+    "options": [
+      "120 students",
+      "40 students",
+      "90 students",
+      "150 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Summer",
+          "value": 40,
+          "color": "#facc15"
+        },
+        {
+          "label": "Fall",
+          "value": 30,
+          "color": "#fb923c"
+        },
+        {
+          "label": "Spring",
+          "value": 20,
+          "color": "#4ade80"
+        },
+        {
+          "label": "Winter",
+          "value": 10,
+          "color": "#38bdf8"
+        }
+      ]
+    },
+    "explanation": "40 percent of 300 students equals 0.40 times 300, which is 120 students."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 4,
+    "prompt": "Maya surveyed 200 students on favorite sports: 35% Soccer, 30% Basketball, 20% Baseball, and 15% Tennis. How many students chose Soccer?",
+    "options": [
+      "70 students",
+      "35 students",
+      "60 students",
+      "50 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Soccer",
+          "value": 35,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Basketball",
+          "value": 30,
+          "color": "#fb923c"
+        },
+        {
+          "label": "Baseball",
+          "value": 20,
+          "color": "#facc15"
+        },
+        {
+          "label": "Tennis",
+          "value": 15,
+          "color": "#4ade80"
+        }
+      ]
+    },
+    "explanation": "35 percent of 200 equals 35 times 2, which is 70 students."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 5,
+    "prompt": "Oliver surveyed 100 students on transportation to school: 50% Bus, 30% Walk, 15% Car, and 5% Bike. What percentage walk to school?",
+    "options": [
+      "30 percent",
+      "50 percent",
+      "15 percent",
+      "5 percent"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Bus",
+          "value": 50,
+          "color": "#facc15"
+        },
+        {
+          "label": "Walk",
+          "value": 30,
+          "color": "#4ade80"
+        },
+        {
+          "label": "Car",
+          "value": 15,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Bike",
+          "value": 5,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    "explanation": "The Walk slice is clearly labeled as 30 percent."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 6,
+    "prompt": "Chloe surveyed 400 students on favorite fruit: 40% Apples, 25% Bananas, 20% Oranges, and 15% Grapes. How many students chose Bananas?",
+    "options": [
+      "100 students",
+      "25 students",
+      "160 students",
+      "80 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Apples",
+          "value": 40,
+          "color": "#f43f5e"
+        },
+        {
+          "label": "Bananas",
+          "value": 25,
+          "color": "#facc15"
+        },
+        {
+          "label": "Oranges",
+          "value": 20,
+          "color": "#fb923c"
+        },
+        {
+          "label": "Grapes",
+          "value": 15,
+          "color": "#a855f7"
+        }
+      ]
+    },
+    "explanation": "25 percent of 400 equals one quarter of 400, which is 100 students."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 7,
+    "prompt": "Ethan surveyed 200 students on after-school clubs: 30% Music, 35% Drama, 20% Coding, and 15% Art. What percentage chose Drama?",
+    "options": [
+      "35 percent",
+      "30 percent",
+      "20 percent",
+      "15 percent"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Music",
+          "value": 30,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Drama",
+          "value": 35,
+          "color": "#f472b6"
+        },
+        {
+          "label": "Coding",
+          "value": 20,
+          "color": "#4ade80"
+        },
+        {
+          "label": "Art",
+          "value": 15,
+          "color": "#facc15"
+        }
+      ]
+    },
+    "explanation": "The Drama section shows 35 percent."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 8,
+    "prompt": "Harper surveyed 200 students on ice cream flavors: 45% Chocolate, 30% Vanilla, 15% Strawberry, and 10% Mint. How many students chose Chocolate?",
+    "options": [
+      "90 students",
+      "45 students",
+      "60 students",
+      "100 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Chocolate",
+          "value": 45,
+          "color": "#a16207"
+        },
+        {
+          "label": "Vanilla",
+          "value": 30,
+          "color": "#fef08a"
+        },
+        {
+          "label": "Strawberry",
+          "value": 15,
+          "color": "#f472b6"
+        },
+        {
+          "label": "Mint",
+          "value": 10,
+          "color": "#4ade80"
+        }
+      ]
+    },
+    "explanation": "45 percent of 200 equals 45 times 2, which is 90 students."
+  },
+  {
+    "worldIndex": 2,
+    "qIndex": 9,
+    "prompt": "Mason surveyed 100 students on favorite subject: 38% Math, 28% Science, 22% Art, and 12% History. What percentage chose Science?",
+    "options": [
+      "28 percent",
+      "38 percent",
+      "22 percent",
+      "12 percent"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Math",
+          "value": 38,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Science",
+          "value": 28,
+          "color": "#4ade80"
+        },
+        {
+          "label": "Art",
+          "value": 22,
+          "color": "#facc15"
+        },
+        {
+          "label": "History",
+          "value": 12,
+          "color": "#fb923c"
+        }
+      ]
+    },
+    "explanation": "The slice for Science represents 28 percent."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 0,
+    "prompt": "Lucas recorded basketball points in 4 games: 12, 18, 14, and 16. What is the MEAN average points per game?",
+    "options": [
+      "15 points",
+      "14 points",
+      "16 points",
+      "60 points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "G1",
+        "G2",
+        "G3",
+        "G4"
+      ],
+      "data": [
+        12,
+        18,
+        14,
+        16
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Sum = 12 + 18 + 14 + 16 = 60. Divide 60 by 4 games to get 15 points."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 1,
+    "prompt": "Mia logged soccer goals across 5 matches: 2, 4, 1, 3, and 5. What is the MEAN number of goals per match?",
+    "options": [
+      "3 goals",
+      "2 goals",
+      "4 goals",
+      "15 goals"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "data": [
+        2,
+        4,
+        1,
+        3,
+        5
+      ],
+      "unit": "goals"
+    },
+    "explanation": "Total goals equal 15. Divide 15 by 5 matches to get a mean of 3 goals."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 2,
+    "prompt": "Logan recorded test scores across 4 subjects: 80, 85, 90, and 95. What is the MEAN score?",
+    "options": [
+      "87.5 points",
+      "85 points",
+      "90 points",
+      "350 points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Math",
+        "Sci",
+        "Art",
+        "Hist"
+      ],
+      "data": [
+        80,
+        85,
+        90,
+        95
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Sum equals 350. Divide 350 by 4 subjects: 350 divided by 4 equals 87.5."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 3,
+    "prompt": "Charlotte recorded bowling scores over 4 games: 110, 130, 120, and 140. What is the MEAN bowling score?",
+    "options": [
+      "125 points",
+      "120 points",
+      "130 points",
+      "500 points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "G1",
+        "G2",
+        "G3",
+        "G4"
+      ],
+      "data": [
+        110,
+        130,
+        120,
+        140
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Sum equals 500. Divide 500 by 4 games to get 125."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 4,
+    "prompt": "Jack logged lap times in seconds across 4 trials: 40, 44, 48, and 52. What is the MEAN lap time?",
+    "options": [
+      "46 seconds",
+      "44 seconds",
+      "48 seconds",
+      "184 seconds"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "data": [
+        40,
+        44,
+        48,
+        52
+      ],
+      "unit": "sec"
+    },
+    "explanation": "Sum equals 184. Divide 184 by 4 trials: 184 divided by 4 equals 46 seconds."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 5,
+    "prompt": "Sophia recorded daily step counts in thousands across 5 days: 6, 8, 10, 12, and 14. What is the MEAN step count?",
+    "options": [
+      "10 thousand steps",
+      "8 thousand steps",
+      "12 thousand steps",
+      "50 thousand steps"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "data": [
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "unit": "k steps"
+    },
+    "explanation": "Sum equals 50. Divide 50 by 5 days: 50 divided by 5 equals 10."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 6,
+    "prompt": "Oliver logged library books read over 4 months: 8, 12, 14, and 18. What is the MEAN books read per month?",
+    "options": [
+      "13 books",
+      "12 books",
+      "14 books",
+      "52 books"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "data": [
+        8,
+        12,
+        14,
+        18
+      ],
+      "unit": "books"
+    },
+    "explanation": "Sum equals 52. Divide 52 by 4 months: 52 divided by 4 equals 13."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 7,
+    "prompt": "Emma recorded swimmer race times in seconds: 30, 32, 34, 36, and 38. What is the MEAN race time?",
+    "options": [
+      "34 seconds",
+      "32 seconds",
+      "36 seconds",
+      "170 seconds"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "data": [
+        30,
+        32,
+        34,
+        36,
+        38
+      ],
+      "unit": "sec"
+    },
+    "explanation": "Sum equals 170. Divide 170 by 5 races to get 34 seconds."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 8,
+    "prompt": "Noah logged daily sales in dollars across 4 days: 50, 70, 60, and 100. What is the MEAN daily sales?",
+    "options": [
+      "70 dollars",
+      "60 dollars",
+      "80 dollars",
+      "280 dollars"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "D1",
+        "D2",
+        "D3",
+        "D4"
+      ],
+      "data": [
+        50,
+        70,
+        60,
+        100
+      ],
+      "unit": "$"
+    },
+    "explanation": "Sum equals 280. Divide 280 by 4 days: 280 divided by 4 equals 70 dollars."
+  },
+  {
+    "worldIndex": 3,
+    "qIndex": 9,
+    "prompt": "Ava recorded quiz points earned across 5 quizzes: 15, 20, 25, 20, and 20. What is the MEAN quiz score?",
+    "options": [
+      "20 points",
+      "15 points",
+      "25 points",
+      "100 points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Q5"
+      ],
+      "data": [
+        15,
+        20,
+        25,
+        20,
+        20
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Sum equals 100. Divide 100 by 5 quizzes to get 20 points."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 0,
+    "prompt": "Mason tracked arcade scores across 5 rounds: 140, 210, 95, 320, and 180. What is the RANGE of the scores?",
+    "options": [
+      "225 points",
+      "320 points",
+      "95 points",
+      "415 points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "data": [
+        140,
+        210,
+        95,
+        320,
+        180
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Range equals highest score (320) minus lowest score (95): 320 minus 95 equals 225."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 1,
+    "prompt": "Chloe logged daily high temperatures: 16°C, 22°C, 29°C, 24°C, and 18°C. What is the RANGE of temperatures?",
+    "options": [
+      "13 degrees Celsius",
+      "29 degrees Celsius",
+      "16 degrees Celsius",
+      "45 degrees Celsius"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "data": [
+        16,
+        22,
+        29,
+        24,
+        18
+      ],
+      "unit": "°C"
+    },
+    "explanation": "Range equals highest (29) minus lowest (16): 29 minus 16 equals 13 degrees Celsius."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 2,
+    "prompt": "Ethan recorded game points: 45, 12, 68, 90, and 33. What is the RANGE of points?",
+    "options": [
+      "78 points",
+      "90 points",
+      "12 points",
+      "102 points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "data": [
+        45,
+        12,
+        68,
+        90,
+        33
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Highest (90) minus lowest (12) equals 78 points."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 3,
+    "prompt": "Harper logged sprint times in seconds: 11.2, 14.5, 10.8, 13.0, and 12.1. What is the RANGE of times?",
+    "options": [
+      "3.7 seconds",
+      "14.5 seconds",
+      "10.8 seconds",
+      "25.3 seconds"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "data": [
+        11.2,
+        14.5,
+        10.8,
+        13,
+        12.1
+      ],
+      "unit": "sec"
+    },
+    "explanation": "Highest time (14.5) minus lowest time (10.8) equals 3.7 seconds."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 4,
+    "prompt": "Lucas recorded monthly rainfall in mm: 15, 45, 80, 20, and 65. What is the RANGE of rainfall?",
+    "options": [
+      "65 mm",
+      "80 mm",
+      "15 mm",
+      "95 mm"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep"
+      ],
+      "data": [
+        15,
+        45,
+        80,
+        20,
+        65
+      ],
+      "unit": "mm"
+    },
+    "explanation": "Highest (80) minus lowest (15) equals 65 mm."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 5,
+    "prompt": "Mia tracked plant height growth in cm: 8, 14, 22, 35, and 19. What is the RANGE of heights?",
+    "options": [
+      "27 cm",
+      "35 cm",
+      "8 cm",
+      "43 cm"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5"
+      ],
+      "data": [
+        8,
+        14,
+        22,
+        35,
+        19
+      ],
+      "unit": "cm"
+    },
+    "explanation": "Highest (35) minus lowest (8) equals 27 cm."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 6,
+    "prompt": "Logan recorded test scores: 65, 98, 72, 85, and 90. What is the RANGE of test scores?",
+    "options": [
+      "33 points",
+      "98 points",
+      "65 points",
+      "163 points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "data": [
+        65,
+        98,
+        72,
+        85,
+        90
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Highest score (98) minus lowest score (65) equals 33."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 7,
+    "prompt": "Charlotte logged fish lengths in cm: 12, 28, 40, 19, and 33. What is the RANGE of lengths?",
+    "options": [
+      "28 cm",
+      "40 cm",
+      "12 cm",
+      "52 cm"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "data": [
+        12,
+        28,
+        40,
+        19,
+        33
+      ],
+      "unit": "cm"
+    },
+    "explanation": "Highest (40) minus lowest (12) equals 28 cm."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 8,
+    "prompt": "Jack recorded savings amounts in dollars: 25, 110, 45, 85, and 140. What is the RANGE of savings?",
+    "options": [
+      "115 dollars",
+      "140 dollars",
+      "25 dollars",
+      "165 dollars"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "data": [
+        25,
+        110,
+        45,
+        85,
+        140
+      ],
+      "unit": "$"
+    },
+    "explanation": "Highest (140) minus lowest (25) equals 115 dollars."
+  },
+  {
+    "worldIndex": 4,
+    "qIndex": 9,
+    "prompt": "Sophia tracked golf scores: 2, 8, 4, 10, and 3. What is the RANGE of scores?",
+    "options": [
+      "8 strokes",
+      "10 strokes",
+      "2 strokes",
+      "12 strokes"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5"
+      ],
+      "data": [
+        2,
+        8,
+        4,
+        10,
+        3
+      ],
+      "unit": "strokes"
+    },
+    "explanation": "Highest score (10) minus lowest score (2) equals 8 strokes."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 0,
+    "prompt": "Jack sees a bar chart comparing company sales where bars look towering, but the y-axis starts at 90 instead of 0. Which misleading trick is used?",
+    "options": [
+      "Truncated Axis",
+      "Inconsistent Scale Steps",
+      "Cherry-Picked Data Range",
+      "No Trick — It's Honest"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "data": [
+        100,
+        105,
+        110,
+        118
+      ],
+      "unit": "units",
+      "yMin": 90
+    },
+    "explanation": "Starting the y-axis at 90 instead of 0 stretches tiny differences into huge bars. That is a Truncated Axis."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 1,
+    "prompt": "Sophia examines a chart where Brand A looks 4 times taller than Brand B, but values are 98% and 95%. Why is the chart misleading?",
+    "options": [
+      "The y-axis is truncated near 90%",
+      "The scale steps are uneven",
+      "Some months are missing",
+      "The chart is completely honest"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Brand A",
+        "Brand B"
+      ],
+      "data": [
+        98,
+        95
+      ],
+      "unit": "%",
+      "yMin": 90
+    },
+    "explanation": "Because the axis starts near 90%, a 3% difference looks four times larger than it really is."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 2,
+    "prompt": "Oliver looks at a graph showing test pass rates starting at 85%. What should a fair bar chart's y-axis start at?",
+    "options": [
+      "0",
+      "50",
+      "85",
+      "100"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Class A",
+        "Class B"
+      ],
+      "data": [
+        90,
+        95
+      ],
+      "unit": "%",
+      "yMin": 85
+    },
+    "explanation": "A fair bar chart's y-axis should always start at 0 so bar heights remain proportional."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 3,
+    "prompt": "Emma compares two graphs of the same dataset. Graph A starts at 0 while Graph B starts at 150. Which graph distorts visual differences?",
+    "options": [
+      "Graph B",
+      "Graph A",
+      "Neither graph",
+      "Both graphs equally"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "Q1",
+        "Q2",
+        "Q3"
+      ],
+      "dataA": [
+        160,
+        170,
+        180
+      ],
+      "dataB": [
+        160,
+        170,
+        180
+      ],
+      "yMinA": 0,
+      "yMinB": 150,
+      "labelA": "Graph A (Honest)",
+      "labelB": "Graph B (Truncated)"
+    },
+    "explanation": "Graph B truncates the axis at 150, exaggerating small real-world variations."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 4,
+    "prompt": "Noah notices a bar graph where 100 looks tiny and 105 looks massive. What trick caused this distortion?",
+    "options": [
+      "Truncated Axis",
+      "Inconsistent Scale Steps",
+      "Cherry-Picked Data Range",
+      "No Trick"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Day 1",
+        "Day 2"
+      ],
+      "data": [
+        100,
+        105
+      ],
+      "unit": "items",
+      "yMin": 98
+    },
+    "explanation": "Truncating the y-axis near 100 exaggerates the tiny difference between 100 and 105."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 5,
+    "prompt": "Ava inspects a bar chart titled 'Widget Production'. The baseline is drawn at 500 units instead of 0. What rule was broken?",
+    "options": [
+      "The y-axis baseline must start at 0 for bar charts",
+      "Bar charts cannot display numbers over 100",
+      "Pie charts should be used instead",
+      "Line graphs must never use gridlines"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Plant A",
+        "Plant B"
+      ],
+      "data": [
+        510,
+        530
+      ],
+      "unit": "widgets",
+      "yMin": 500
+    },
+    "explanation": "Bar chart heights represent total quantities, so the baseline must start at 0."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 6,
+    "prompt": "Liam reviews a chart claiming revenue doubled, but the axis goes from $98 million to $100 million. What is the actual increase?",
+    "options": [
+      "2 million dollars (about 2%)",
+      "100 million dollars",
+      "50 million dollars",
+      "200 million dollars"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Year 1",
+        "Year 2"
+      ],
+      "data": [
+        98,
+        100
+      ],
+      "unit": "$M",
+      "yMin": 97
+    },
+    "explanation": "The increase is only 2 million dollars, but the truncated axis made it look like a 100% jump."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 7,
+    "prompt": "Harper notices a chart where the bottom part of every bar is cut off by a break line. What does that break line signify?",
+    "options": [
+      "A broken or truncated axis",
+      "An error in data collection",
+      "A trend line moving upward",
+      "A pie chart slice separator"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Item A",
+        "Item B"
+      ],
+      "data": [
+        80,
+        90
+      ],
+      "unit": "pts",
+      "yMin": 70
+    },
+    "explanation": "A zig-zag break line shows the axis has been truncated or cut short."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 8,
+    "prompt": "Mason spots a bar graph where 50 looks like zero because the axis begins at 50. What visual impression does this create?",
+    "options": [
+      "It makes the first bar look non-existent or zero",
+      "It makes all bars look equal",
+      "It makes the graph 100% fair",
+      "It hides the labels"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Val 1",
+        "Val 2"
+      ],
+      "data": [
+        50,
+        75
+      ],
+      "unit": "pts",
+      "yMin": 50
+    },
+    "explanation": "Starting the axis at 50 makes a value of 50 appear to have no height at all."
+  },
+  {
+    "worldIndex": 5,
+    "qIndex": 9,
+    "prompt": "Chloe is asked how to spot a Truncated Axis instantly. What is the first thing she should check?",
+    "options": [
+      "Check if the y-axis starts at 0",
+      "Check the color of the bars",
+      "Check the title font size",
+      "Check how many slices are in the graph"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "data": [
+        110,
+        115,
+        120
+      ],
+      "unit": "pts",
+      "yMin": 105
+    },
+    "explanation": "Always check whether the y-axis baseline starts at 0 before trusting bar height comparisons."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 0,
+    "prompt": "Ethan notices gridlines on a bar chart evenly spaced on paper but labeled 0, 10, 20, 70, 120. Which misleading trick is this?",
+    "options": [
+      "Inconsistent Scale Steps",
+      "Truncated Axis",
+      "Cherry-Picked Data Range",
+      "No Trick — It's Honest"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep"
+      ],
+      "data": [
+        10,
+        20,
+        70,
+        120
+      ],
+      "unit": "mm"
+    },
+    "explanation": "Equal physical gaps should represent equal numeric increments. Here the steps jump by 10 then 50, which is Inconsistent Scale Steps."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 1,
+    "prompt": "Lucas checks a line graph's vertical grid lines: 0 to 5, 5 to 10, 10 to 50, 50 to 100. Why is this misleading?",
+    "options": [
+      "Equal physical spacing does not represent equal numerical steps",
+      "Line graphs cannot use numbers above 10",
+      "The axis starts at zero",
+      "The colors are too bright"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "W1",
+        "W2",
+        "W3",
+        "W4"
+      ],
+      "data": [
+        5,
+        10,
+        50,
+        100
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Gridline steps jump from 5 to 40 then 50, distorting the slope of the line."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 2,
+    "prompt": "Mia looks at gridlines on a rainfall chart labeled 0, 30, 60, 90, 120. Is this graph scale fair or misleading?",
+    "options": [
+      "Fair — every gridline step increases by exactly 30",
+      "Misleading — the steps are unequal",
+      "Misleading — the axis is truncated",
+      "Fair — because it uses yellow bars"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep"
+      ],
+      "data": [
+        30,
+        60,
+        90,
+        120
+      ],
+      "unit": "mm"
+    },
+    "explanation": "Each step increases by exactly 30 mm (0 to 30 to 60 to 90 to 120), so the scale is fair and consistent."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 3,
+    "prompt": "Logan is designing a fair graph scale from 0 to 100 using 5 gridlines. What step size should each gridline use?",
+    "options": [
+      "20 units per step",
+      "10 units per step",
+      "25 units per step",
+      "50 units per step"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "data": [
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "unit": "pts"
+    },
+    "explanation": "100 divided by 5 equal steps equals 20 units per step."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 4,
+    "prompt": "Charlotte sees a graph where distance between 0 and 10 is 2 inches, and distance between 10 and 100 is also 2 inches. What trick is used?",
+    "options": [
+      "Inconsistent Scale Steps",
+      "Truncated Axis",
+      "Cherry-Picked Range",
+      "Honest Graph"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Val A",
+        "Val B"
+      ],
+      "data": [
+        10,
+        100
+      ],
+      "unit": "pts"
+    },
+    "explanation": "The first 2 inches represents 10 units, but the second 2 inches represents 90 units! That's an Inconsistent Scale."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 5,
+    "prompt": "Jack analyzes a graph with y-axis marks at 0, 5, 10, 15, 20, 25. What is the scale step size?",
+    "options": [
+      "5 units",
+      "10 units",
+      "1 unit",
+      "25 units"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "data": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "pts"
+    },
+    "explanation": "The difference between each adjacent gridline is 5 units."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 6,
+    "prompt": "Sophia spots a chart where gridline gaps are 0, 100, 200, 300, 1000. What happens to values between 300 and 1000?",
+    "options": [
+      "They are compressed visually, making large jumps look small",
+      "They are stretched out to look huge",
+      "They disappear entirely",
+      "They turn into a pie chart"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "data": [
+        100,
+        200,
+        300,
+        1000
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Squeezing a jump of 700 into the same physical space as a jump of 100 compresses large changes visually."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 7,
+    "prompt": "Oliver wants to correct an uneven scale of 0, 10, 20, 70, 120 over 4 equal grid steps. What equal step size should he use?",
+    "options": [
+      "30 units per step",
+      "20 units per step",
+      "40 units per step",
+      "15 units per step"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep"
+      ],
+      "data": [
+        10,
+        20,
+        70,
+        120
+      ],
+      "unit": "mm"
+    },
+    "explanation": "120 divided by 4 equal steps equals 30 units per gridline step."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 8,
+    "prompt": "Emma notes that on a fair graph, a line segment spanning 2 gridlines should represent how much compared to 1 gridline?",
+    "options": [
+      "Twice as much value change",
+      "The same value change",
+      "Half as much value change",
+      "Four times as much value change"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Pt1",
+        "Pt2",
+        "Pt3"
+      ],
+      "data": [
+        10,
+        20,
+        30
+      ],
+      "unit": "pts"
+    },
+    "explanation": "On a fair scale, spanning two equal gridline steps represents twice the numerical value change."
+  },
+  {
+    "worldIndex": 6,
+    "qIndex": 9,
+    "prompt": "Noah summarizes the key rule for graph scales. Which statement is correct?",
+    "options": [
+      "Every gridline gap on an axis must represent the exact same numerical value",
+      "Gridline gaps can be any size as long as numbers are printed",
+      "Scale steps should always double each line",
+      "Only horizontal axes need equal steps"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "data": [
+        10,
+        20,
+        30
+      ],
+      "unit": "pts"
+    },
+    "explanation": "A fair graph must maintain equal numerical value steps across all equal physical gaps."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 0,
+    "prompt": "Liam sees a line graph showing stock prices rising only from Week 5 to Week 8. The full data has 8 weeks, and Weeks 1 to 4 crashed. Which trick is being used?",
+    "options": [
+      "Cherry-Picked Data Range",
+      "Truncated Axis",
+      "Inconsistent Scale Steps",
+      "No Trick — It's Honest"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "W5",
+        "W6",
+        "W7",
+        "W8"
+      ],
+      "data": [
+        70,
+        160,
+        30,
+        190
+      ],
+      "unit": "$"
+    },
+    "explanation": "Hiding the crashing weeks (1 to 4) and displaying only the rising weeks (5 to 8) is a Cherry-Picked Data Range."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 1,
+    "prompt": "Harper notices an ad showing temperature drop over just 2 hours of a 24-hour day to claim global cooling. Why is this misleading?",
+    "options": [
+      "It cherry-picks a tiny flattering window and hides the full 24-hour picture",
+      "It uses line graphs instead of bar charts",
+      "The numbers are written in blue",
+      "The y-axis starts at zero"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "2PM",
+        "3PM",
+        "4PM"
+      ],
+      "data": [
+        30,
+        28,
+        25
+      ],
+      "unit": "°C"
+    },
+    "explanation": "Selecting 2 favorable hours out of 24 distorts the overall daily climate trend."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 2,
+    "prompt": "Ava reviews an attendance graph that only displays Tuesday through Thursday, hiding low attendance on Monday and Friday. What rule was violated?",
+    "options": [
+      "A trustworthy graph must show the full time range, not a selective subset",
+      "Attendance must only be shown in pie charts",
+      "Graphs cannot show weekdays",
+      "Monday and Friday must be combined into one bar"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu"
+      ],
+      "data": [
+        95,
+        98,
+        96
+      ],
+      "unit": "%"
+    },
+    "explanation": "Hiding specific days selectively creates a false impression of full-week attendance."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 3,
+    "prompt": "Mason compares a 10-year climate graph with a 1-year snippet taken from the middle. What does the full 10-year graph provide?",
+    "options": [
+      "The complete context and long-term trend",
+      "A smaller image size",
+      "Higher numerical values",
+      "Fewer data points"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Y1",
+        "Y3",
+        "Y5",
+        "Y7",
+        "Y10"
+      ],
+      "data": [
+        14,
+        15,
+        14.8,
+        15.5,
+        16.2
+      ],
+      "unit": "°C"
+    },
+    "explanation": "Looking at the full multi-year timeline reveals the true long-term trend."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 4,
+    "prompt": "Chloe sees a report claiming 'Continuous Growth!' showing only Q3 and Q4. In Q1 and Q2, sales dropped 50%. How many quarters should a fair annual report show?",
+    "options": [
+      "All 4 quarters of the year",
+      "Only the best 2 quarters",
+      "Only 1 quarter",
+      "6 quarters"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Q3",
+        "Q4"
+      ],
+      "data": [
+        120,
+        150
+      ],
+      "unit": "$k"
+    },
+    "explanation": "An annual report must display all 4 quarters to give an honest summary of performance."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 5,
+    "prompt": "Ethan reads a headline: 'Website Visitors Explode!' backed by a graph showing 3:00 PM to 4:00 PM. What question should Ethan ask as a Graph Detective?",
+    "options": [
+      "What do visitor numbers look like over the rest of the day?",
+      "What color is the website background?",
+      "Is the server located in Europe?",
+      "How many words are on the page?"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "3:00",
+        "3:20",
+        "3:40",
+        "4:00"
+      ],
+      "data": [
+        100,
+        300,
+        500,
+        900
+      ],
+      "unit": "users"
+    },
+    "explanation": "A detective asks if the 1-hour window represents the full daily pattern or just a cherry-picked peak."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 6,
+    "prompt": "Lucas investigates a diet ad showing weight loss graph over Days 1 to 5. Days 6 to 30 showed weight was gained back. What did the ad hide?",
+    "options": [
+      "The overall outcome of the 30-day timeline",
+      "The brand name of the scale",
+      "The recipe ingredients",
+      "The starting weight"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "data": [
+        180,
+        178,
+        175,
+        173,
+        170
+      ],
+      "unit": "lbs"
+    },
+    "explanation": "Showing only the initial 5 days hides the long-term regain observed in the complete dataset."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 7,
+    "prompt": "Mia looks at a 12-month graph vs a 3-month graph for store revenue. Which timeline provides the most reliable trend analysis?",
+    "options": [
+      "The full 12-month graph",
+      "The 3-month snippet",
+      "Neither graph",
+      "A 1-day snapshot"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "J",
+        "F",
+        "M",
+        "A",
+        "M",
+        "J",
+        "J",
+        "A",
+        "S",
+        "O",
+        "N",
+        "D"
+      ],
+      "data": [
+        40,
+        42,
+        38,
+        45,
+        50,
+        48,
+        55,
+        60,
+        58,
+        65,
+        70,
+        85
+      ],
+      "unit": "$k"
+    },
+    "explanation": "The 12-month timeline captures seasonal patterns and overall yearly direction."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 8,
+    "prompt": "Logan is asked: 'What is Cherry-Picking in data interpretation?' How should he define it?",
+    "options": [
+      "Selecting only data points that support a desired claim while ignoring the rest",
+      "Using red colors for all bars in a chart",
+      "Picking fruit data for lunchbox charts",
+      "Dividing numbers by 100"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Peak 1",
+        "Peak 2"
+      ],
+      "data": [
+        80,
+        95
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Cherry-picking means intentionally selecting favorable data subsets while omitting unfavorable facts."
+  },
+  {
+    "worldIndex": 7,
+    "qIndex": 9,
+    "prompt": "Charlotte wants to ensure her graph presentation is 100% honest. What checklist item should she follow regarding time range?",
+    "options": [
+      "Show the entire relevant time period without omitting unfavorable periods",
+      "Show only the highest peak",
+      "Cut off the beginning and end of every graph",
+      "Use 3D effects on all lines"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "W1",
+        "W2",
+        "W3",
+        "W4"
+      ],
+      "data": [
+        20,
+        40,
+        60,
+        80
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Honest graphs display complete, unedited time ranges so viewers see the whole truth."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 0,
+    "prompt": "Jack compares Graph A (y-axis starts at 0) and Graph B (y-axis starts at 90), both drawn from identical sales data (100 to 118 units). Which graph makes growth look bigger than it really is?",
+    "options": [
+      "Graph B",
+      "Graph A",
+      "Both look equally big",
+      "Neither — they're identical"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "dataA": [
+        100,
+        105,
+        110,
+        118
+      ],
+      "dataB": [
+        100,
+        105,
+        110,
+        118
+      ],
+      "yMinA": 0,
+      "yMinB": 90,
+      "labelA": "Graph A (Honest)",
+      "labelB": "Graph B (Truncated)"
+    },
+    "explanation": "Graph B truncates the y-axis at 90, stretching a small 18-unit increase into a giant visual jump."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 1,
+    "prompt": "Sophia looks at two graphs of city population growth. Graph A uses a 0 to 100,000 scale. Graph B starts at 95,000. Which graph presents an honest visual comparison?",
+    "options": [
+      "Graph A",
+      "Graph B",
+      "Both graphs",
+      "Neither graph"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "2020",
+        "2024"
+      ],
+      "dataA": [
+        96000,
+        99000
+      ],
+      "dataB": [
+        96000,
+        99000
+      ],
+      "yMinA": 0,
+      "yMinB": 95000,
+      "labelA": "Graph A (Honest)",
+      "labelB": "Graph B (Truncated)"
+    },
+    "explanation": "Graph A starts at 0, maintaining true visual proportion across population bars."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 2,
+    "prompt": "Oliver inspects Graph A (even gridlines 0, 20, 40, 60) and Graph B (uneven gridlines 0, 10, 20, 60). Which graph accurately reflects numerical change?",
+    "options": [
+      "Graph A",
+      "Graph B",
+      "Both graphs",
+      "Neither graph"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "dataA": [
+        20,
+        40,
+        60
+      ],
+      "dataB": [
+        20,
+        40,
+        60
+      ],
+      "yMinA": 0,
+      "yMinB": 0,
+      "labelA": "Graph A (Equal Steps)",
+      "labelB": "Graph B (Uneven Steps)"
+    },
+    "explanation": "Graph A maintains consistent 20-unit step sizes between every gridline."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 3,
+    "prompt": "Emma compares Graph A showing all 12 months of test scores with Graph B showing only May and June. Which graph should a school principal trust?",
+    "options": [
+      "Graph A",
+      "Graph B",
+      "Neither graph",
+      "Graph B with 3D bars"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "M1",
+        "M6",
+        "M12"
+      ],
+      "dataA": [
+        70,
+        75,
+        90
+      ],
+      "dataB": [
+        88,
+        90
+      ],
+      "yMinA": 0,
+      "yMinB": 0,
+      "labelA": "Graph A (Full Year)",
+      "labelB": "Graph B (2 Months)"
+    },
+    "explanation": "Graph A shows the full 12-month academic timeline without cherry-picking."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 4,
+    "prompt": "Noah examines two bar charts of company profits. Graph A baseline is $0. Graph B baseline is $45,000. Why does Graph B make Company X look 10 times better than Company Y?",
+    "options": [
+      "Graph B's truncated axis exaggerates the small difference between profits",
+      "Company X actually made 10 times more money",
+      "Graph A has missing bars",
+      "Graph B uses green ink"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "Co X",
+        "Co Y"
+      ],
+      "dataA": [
+        50000,
+        48000
+      ],
+      "dataB": [
+        50000,
+        48000
+      ],
+      "yMinA": 0,
+      "yMinB": 45000,
+      "labelA": "Graph A ($0 Base)",
+      "labelB": "Graph B ($45k Base)"
+    },
+    "explanation": "Graph B's baseline at $45,000 cuts off the lower portion of both bars, inflating their relative ratio visually."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 5,
+    "prompt": "Ava compares two line graphs tracking speed. Graph A y-axis goes 0 to 100 mph. Graph B y-axis goes 50 to 60 mph. Which graph makes a 2 mph wobble look like a wild crash?",
+    "options": [
+      "Graph B",
+      "Graph A",
+      "Both graphs",
+      "Neither graph"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "T1",
+        "T2"
+      ],
+      "dataA": [
+        55,
+        53
+      ],
+      "dataB": [
+        55,
+        53
+      ],
+      "yMinA": 0,
+      "yMinB": 50,
+      "labelA": "Graph A (Full Scale)",
+      "labelB": "Graph B (Zoomed)"
+    },
+    "explanation": "Graph B zooms in tightly on the 50 to 60 range, magnifying a tiny 2 mph wobble into huge line swings."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 6,
+    "prompt": "Liam compares Graph A (scale 0, 50, 100, 150) and Graph B (scale 0, 10, 20, 150). Which graph uses fair scale steps?",
+    "options": [
+      "Graph A",
+      "Graph B",
+      "Both graphs",
+      "Neither graph"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "dataA": [
+        50,
+        100,
+        150
+      ],
+      "dataB": [
+        50,
+        100,
+        150
+      ],
+      "yMinA": 0,
+      "yMinB": 0,
+      "labelA": "Graph A (50 Steps)",
+      "labelB": "Graph B (Uneven)"
+    },
+    "explanation": "Graph A increases by 50 units at every step, whereas Graph B jumps from 20 straight to 150."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 7,
+    "prompt": "Harper analyzes two pie charts of lunch preferences. Chart A slices sum to 100%. Chart B slices sum to 135%. Which chart contains a mathematical error?",
+    "options": [
+      "Chart B",
+      "Chart A",
+      "Both charts",
+      "Neither chart"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "A",
+          "value": 50,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "B",
+          "value": 50,
+          "color": "#facc15"
+        }
+      ]
+    },
+    "explanation": "Pie chart slices must sum to exactly 100% of the whole. 135% indicates a flawed chart."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 8,
+    "prompt": "Mason is presented with Graph A (honest, clear labels) and Graph B (misleading truncated axis). Which graph should he choose for an honest report?",
+    "options": [
+      "Graph A",
+      "Graph B",
+      "Use both graphs combined",
+      "Create a 3rd graph with no numbers"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "X",
+        "Y"
+      ],
+      "dataA": [
+        100,
+        110
+      ],
+      "dataB": [
+        100,
+        110
+      ],
+      "yMinA": 0,
+      "yMinB": 95,
+      "labelA": "Graph A",
+      "labelB": "Graph B"
+    },
+    "explanation": "Graph A provides a clear, honest visual representation starting from zero."
+  },
+  {
+    "worldIndex": 8,
+    "qIndex": 9,
+    "prompt": "Chloe summarizes how to evaluate two competing graphs of the same dataset. What is the best strategy?",
+    "options": [
+      "Check axis baselines, scale step consistency, and time range completeness on both",
+      "Pick the graph with prettier colors",
+      "Choose the graph that makes numbers look bigger",
+      "Ignore numbers and read title only"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "compare",
+      "labels": [
+        "A",
+        "B"
+      ],
+      "dataA": [
+        20,
+        30
+      ],
+      "dataB": [
+        20,
+        30
+      ],
+      "yMinA": 0,
+      "yMinB": 15,
+      "labelA": "Graph A",
+      "labelB": "Graph B"
+    },
+    "explanation": "Evaluate the 3 core detective checks: axis baseline, scale step equality, and timeline range."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 0,
+    "prompt": "Graph Detective Master Test: A bar chart shows 50 Apples, 30 Bananas, 20 Oranges, and 40 Pears. What is the MEAN number of fruits per category?",
+    "options": [
+      "35 fruits",
+      "40 fruits",
+      "30 fruits",
+      "140 fruits"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Apples",
+        "Bananas",
+        "Oranges",
+        "Pears"
+      ],
+      "data": [
+        50,
+        30,
+        20,
+        40
+      ],
+      "unit": "fruits"
+    },
+    "explanation": "Total fruits = 50 + 30 + 20 + 40 = 140. Divide by 4 categories: 140 divided by 4 equals 35 fruits."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 1,
+    "prompt": "Graph Detective Master Test: A line graph shows daily steps: 4000, 7000, 3000, 9000, and 5000. What is the RANGE of step counts?",
+    "options": [
+      "6000 steps",
+      "9000 steps",
+      "3000 steps",
+      "12000 steps"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "data": [
+        4000,
+        7000,
+        3000,
+        9000,
+        5000
+      ],
+      "unit": "steps"
+    },
+    "explanation": "Range equals highest (9000) minus lowest (3000): 9000 minus 3000 equals 6000 steps."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 2,
+    "prompt": "Graph Detective Master Test: A pie chart shows student favorite snacks: 40% Chips, 30% Fruit, 20% Cookies, and 10% Nuts. In a class of 200 students, how many chose Fruit?",
+    "options": [
+      "60 students",
+      "30 students",
+      "80 students",
+      "40 students"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "Chips",
+          "value": 40,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "Fruit",
+          "value": 30,
+          "color": "#4ade80"
+        },
+        {
+          "label": "Cookies",
+          "value": 20,
+          "color": "#facc15"
+        },
+        {
+          "label": "Nuts",
+          "value": 10,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    "explanation": "30 percent of 200 students equals 30 divided by 100 times 200 = 60 students."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 3,
+    "prompt": "Graph Detective Master Test: You spot a bar chart where y-axis gridlines are spaced 1 inch apart but marked 0, 5, 10, 50, 100. Which trick is present?",
+    "options": [
+      "Inconsistent Scale Steps",
+      "Truncated Axis",
+      "Cherry-Picked Range",
+      "Pie Chart Slice Error"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "data": [
+        5,
+        10,
+        50,
+        100,
+        120
+      ],
+      "unit": "pts"
+    },
+    "explanation": "Equal physical spacing marked with unequal value jumps (5 vs 40 vs 50) is an Inconsistent Scale."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 4,
+    "prompt": "Graph Detective Master Test: A news report displays a graph of gas prices starting at $3.80 per gallon instead of $0.00. What trick exaggerates price changes?",
+    "options": [
+      "Truncated Axis",
+      "Inconsistent Scale Steps",
+      "Cherry-Picked Range",
+      "Mean Calculation Error"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "W1",
+        "W2"
+      ],
+      "data": [
+        3.85,
+        3.92
+      ],
+      "unit": "$",
+      "yMin": 3.8
+    },
+    "explanation": "Starting the vertical axis at $3.80 truncates the axis, magnifying minor price fluctuations."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 5,
+    "prompt": "Graph Detective Master Test: A company shows sales only for December to claim huge demand, ignoring drops in Jan through Nov. Which trick is this?",
+    "options": [
+      "Cherry-Picked Data Range",
+      "Truncated Axis",
+      "Inconsistent Scale Steps",
+      "Honest Graph"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "Dec"
+      ],
+      "data": [
+        950
+      ],
+      "unit": "sales"
+    },
+    "explanation": "Displaying only the peak month of December while omitting January through November is Cherry-Picking."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 6,
+    "prompt": "Graph Detective Master Test: Looking at a line graph of temperature over 5 days (15°C, 18°C, 22°C, 19°C, 25°C), what was the change from Day 1 to Day 5?",
+    "options": [
+      "+10 degrees Celsius",
+      "+7 degrees Celsius",
+      "+3 degrees Celsius",
+      "+15 degrees Celsius"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "line",
+      "labels": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "data": [
+        15,
+        18,
+        22,
+        19,
+        25
+      ],
+      "unit": "°C",
+      "highlightIndex": 4
+    },
+    "explanation": "Day 5 (25°C) minus Day 1 (15°C) equals an increase of 10 degrees Celsius."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 7,
+    "prompt": "Graph Detective Master Test: What are the 3 mandatory checks on every Graph Detective's checklist?",
+    "options": [
+      "1. Axis start at 0? 2. Equal scale steps? 3. Full data range?",
+      "1. Red bars? 2. 3D effects? 3. Large title?",
+      "1. Pie chart only? 2. Line graph only? 3. No numbers?",
+      "1. Font size? 2. Page width? 3. Author name?"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Axis",
+        "Scale",
+        "Range"
+      ],
+      "data": [
+        100,
+        100,
+        100
+      ],
+      "unit": "%"
+    },
+    "explanation": "The 3 core checks: Axis baseline at 0, consistent scale steps, and complete timeline range."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 8,
+    "prompt": "Graph Detective Master Test: A pie chart has 4 slices labeled 40%, 35%, 20%, and 15%. Why is this chart invalid?",
+    "options": [
+      "The percentages sum to 110%, which exceeds 100%",
+      "It should be a line graph",
+      "The slices are too colorful",
+      "It does not have a y-axis"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "pie",
+      "data": [
+        {
+          "label": "A",
+          "value": 40,
+          "color": "#38bdf8"
+        },
+        {
+          "label": "B",
+          "value": 35,
+          "color": "#facc15"
+        },
+        {
+          "label": "C",
+          "value": 20,
+          "color": "#4ade80"
+        },
+        {
+          "label": "D",
+          "value": 15,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    "explanation": "40 + 35 + 20 + 15 = 110%. A pie chart must represent a whole, which is exactly 100%."
+  },
+  {
+    "worldIndex": 9,
+    "qIndex": 9,
+    "prompt": "Graph Detective Master Test: You have completed all 100 questions! What title have you earned?",
+    "options": [
+      "Master Graph Detective 🕵️✨",
+      "Apprentice Reader",
+      "Chart Rookie",
+      "Data Novice"
+    ],
+    "correctIndex": 0,
+    "diagramData": {
+      "kind": "bar",
+      "labels": [
+        "Score"
+      ],
+      "data": [
+        100
+      ],
+      "unit": "%"
+    },
+    "explanation": "Congratulations! You have mastered all 10 worlds and earned the title of Master Graph Detective!"
+  }
+];
+
+export function getQuestion(worldIndex = 0, questionIndex = 0) {
+  const worldQuestions = DETERMINISTIC_QUESTIONS.filter(q => q.worldIndex === worldIndex);
+  if (!worldQuestions.length) return DETERMINISTIC_QUESTIONS[0];
+  const q = worldQuestions[questionIndex % worldQuestions.length];
+  const world = PRACTICE_WORLDS[worldIndex] || PRACTICE_WORLDS[0];
+  const audioKey = `practice_w${worldIndex}_q${(questionIndex % worldQuestions.length) + 1}`;
+  const hintAudioKey = `practice_w${worldIndex}_q${(questionIndex % worldQuestions.length) + 1}_hint`;
+  return {
+    ...q,
+    world,
+    audioKey,
+    hintAudioKey
+  };
+}
+
+export function makeQuestion(worldIndex = 0, questionIndex = 0) {
+  return getQuestion(worldIndex, questionIndex);
+}
