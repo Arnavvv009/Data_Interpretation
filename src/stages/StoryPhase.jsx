@@ -125,13 +125,13 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
   };
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 relative overflow-hidden select-none z-10 w-full">
+    <div className="flex-1 min-h-0 w-full flex flex-col items-center justify-start sm:justify-center p-2.5 sm:p-4 md:p-6 py-4 sm:py-6 relative overflow-y-auto select-none z-10">
       <BgSymbols />
 
       <div className="w-full max-w-4xl flex flex-col items-center justify-between z-20 my-auto">
         {/* Top Progress Bar */}
-        <div className="w-full flex items-center justify-between mb-2.5 px-1">
-          <div className="flex-1 h-2 bg-purple-950/80 rounded-full overflow-hidden mr-4 border border-purple-800/40">
+        <div className="w-full flex items-center justify-between mb-2 sm:mb-2.5 px-1">
+          <div className="flex-1 h-2 bg-purple-950/80 rounded-full overflow-hidden mr-3 sm:mr-4 border border-purple-800/40">
             <div
               className="h-full bg-amber-400 transition-all duration-300 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.8)]"
               style={{ width: `${((slideIdx + 1) / STORY_SLIDES.length) * 100}%` }}
@@ -143,9 +143,9 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
         </div>
 
         {/* Main Card */}
-        <div className="w-full bg-[#150a33]/95 border-2 border-purple-500/30 rounded-3xl p-4 sm:p-5 md:p-6 shadow-2xl backdrop-blur-md flex flex-col gap-3 sm:gap-4">
-          {/* Top: 20:8 Aspect Ratio Cartoon Image Banner */}
-          <div className="w-full aspect-[20/8] relative rounded-2xl overflow-hidden border border-purple-500/30 bg-[#0d0426] shadow-lg group shrink-0">
+        <div className="w-full bg-[#150a33]/95 border-2 border-purple-500/30 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 md:p-6 shadow-2xl backdrop-blur-md flex flex-col gap-2.5 sm:gap-4">
+          {/* Top: Responsive Aspect Ratio Cartoon Image Banner */}
+          <div className="w-full aspect-[16/9] sm:aspect-[20/8] max-h-[220px] sm:max-h-[280px] relative rounded-xl sm:rounded-2xl overflow-hidden border border-purple-500/30 bg-[#0d0426] shadow-lg group shrink-0">
             <img
               src={slide.image}
               alt={slide.title}
@@ -156,7 +156,7 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0e0529]/70 via-transparent to-black/20 pointer-events-none" />
 
             {/* Top Left: Category Badge */}
-            <div className="absolute top-2.5 left-3 bg-[#1e0f45]/90 border border-amber-400/80 backdrop-blur-md px-3.5 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+            <div className="absolute top-2 left-2.5 sm:top-2.5 sm:left-3 bg-[#1e0f45]/90 border border-amber-400/80 backdrop-blur-md px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full flex items-center gap-1 sm:gap-1.5 shadow-md">
               <span className="text-xs text-amber-300">✨</span>
               <span className="font-display font-900 text-[10px] sm:text-xs text-amber-300 tracking-wider uppercase">
                 {slide.category}
@@ -164,15 +164,15 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
             </div>
 
             {/* Top Right: Slide Number Badge */}
-            <div className="absolute top-2.5 right-3 bg-black/75 backdrop-blur-md px-3.5 py-1 rounded-full shadow-md">
-              <span className="font-display font-900 text-[11px] sm:text-xs text-white">
+            <div className="absolute top-2 right-2.5 sm:top-2.5 sm:right-3 bg-black/75 backdrop-blur-md px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full shadow-md">
+              <span className="font-display font-900 text-[10px] sm:text-xs text-white">
                 Slide {slideIdx + 1} / {STORY_SLIDES.length}
               </span>
             </div>
           </div>
 
           {/* Title */}
-          <h2 className="font-display font-900 text-xl sm:text-2xl md:text-3xl text-amber-400 leading-tight">
+          <h2 className="font-display font-900 text-lg sm:text-2xl md:text-3xl text-amber-400 leading-tight">
             {slide.title}
           </h2>
 
@@ -182,9 +182,9 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
           </p>
 
           {/* Bottom Row: 2-Column Boxes (Quote Pill & White Speech Pill) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
             {/* Left Box: Gold/Purple Quote Box */}
-            <div className="bg-[#1b0d3e]/90 border border-amber-400/60 rounded-2xl px-4 py-3 flex items-center justify-center text-center shadow-md">
+            <div className="bg-[#1b0d3e]/90 border border-amber-400/60 rounded-xl sm:rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center justify-center text-center shadow-md">
               <span className="text-amber-400 text-sm mr-2 shrink-0">✨</span>
               <span className="text-amber-300 font-display font-900 text-xs sm:text-sm leading-tight">
                 "{slide.quote}"
@@ -193,8 +193,8 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
             </div>
 
             {/* Right Box: White Bubble Card */}
-            <div className="bg-white text-[#0b031c] rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-100 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-inner">
+            <div className="bg-white text-[#0b031c] rounded-xl sm:rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 shadow-xl">
+              <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-amber-100 flex items-center justify-center text-base sm:text-xl shrink-0 shadow-inner">
                 {slide.icon}
               </div>
               <p className="font-display font-black text-xs sm:text-sm leading-snug text-left flex-1">
@@ -205,18 +205,18 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
         </div>
 
         {/* Bottom Navigation Row */}
-        <div className="w-full flex items-center justify-between mt-3.5 sm:mt-4 px-2">
+        <div className="w-full flex items-center justify-between gap-2 mt-3 sm:mt-4 px-1">
           {/* Back Button */}
           <button
             onClick={goPrev}
             disabled={slideIdx === 0}
-            className="bg-[#1c0d3a]/90 hover:bg-[#2c1859] border border-white/25 text-white font-display font-900 text-xs sm:text-sm px-6 py-2 sm:py-2.5 rounded-full cursor-pointer transition disabled:opacity-25 disabled:cursor-not-allowed shadow-md hover:scale-105"
+            className="bg-[#1c0d3a]/90 hover:bg-[#2c1859] border border-white/25 text-white font-display font-900 text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-full cursor-pointer transition disabled:opacity-25 disabled:cursor-not-allowed shadow-md hover:scale-105 shrink-0"
           >
             ← Back
           </button>
 
-          {/* Dot Pagination */}
-          <div className="flex items-center gap-2">
+          {/* Dot Pagination (Compact on mobile) */}
+          <div className="hidden xs:flex items-center gap-1.5 sm:gap-2">
             {STORY_SLIDES.map((_, i) => (
               <button
                 key={i}
@@ -226,8 +226,8 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
                 }}
                 className={`rounded-full transition-all duration-300 cursor-pointer ${
                   i === slideIdx
-                    ? 'w-3 h-3 bg-amber-400 shadow-[0_0_10px_rgba(250,204,21,0.9)] scale-110'
-                    : 'w-2 h-2 bg-white/30 hover:bg-white/60'
+                    ? 'w-2.5 sm:w-3 h-2.5 sm:h-3 bg-amber-400 shadow-[0_0_10px_rgba(250,204,21,0.9)] scale-110'
+                    : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-white/30 hover:bg-white/60'
                 }`}
               />
             ))}
@@ -236,7 +236,7 @@ export function StoryPhase({ muted, onDone, onSlideChange }) {
           {/* Next / Proceed Button */}
           <button
             onClick={goNext}
-            className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-display font-900 text-xs sm:text-sm md:text-base px-7 sm:px-8 py-2 sm:py-2.5 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:scale-105 transition-all cursor-pointer flex items-center gap-2"
+            className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-display font-900 text-xs sm:text-sm md:text-base px-5 sm:px-8 py-2 sm:py-2.5 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:scale-105 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shrink-0"
           >
             <span>{slideIdx === STORY_SLIDES.length - 1 ? 'Enter Lab 🧪' : 'Next'}</span>
             <span>→</span>

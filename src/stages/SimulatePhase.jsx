@@ -418,7 +418,7 @@ function InteractiveBarChart({ data, labels, selectedIndex, onSelect, color = "#
   const gridValues = Array.from({ length: gridSteps + 1 }, (_, i) => Math.round(yMin + i * ((scaleTop - yMin) / gridSteps)));
 
   return (
-    <svg width="100%" height="100%" viewBox={`0 0 ${w} ${h + 16}`} preserveAspectRatio="xMidYMid meet" className="w-full h-40 sm:h-48 md:h-52 max-h-[220px] drop-shadow-[0_0_20px_rgba(56,189,248,0.45)] shrink min-h-0">
+    <svg width="100%" height="100%" viewBox={`0 0 ${w} ${h + 16}`} preserveAspectRatio="xMidYMid meet" className="w-full h-36 sm:h-44 md:h-52 max-h-[220px] drop-shadow-[0_0_20px_rgba(56,189,248,0.45)] shrink min-h-0">
       {gridValues.map((gv, i) => {
         const gy = toY(gv);
         return (
@@ -478,7 +478,7 @@ function InteractiveLineChart({ data, labels, selectedIndex, onSelect, color = "
   const points = data.map((v, i) => [padL + 12 + i * stepX, toY(v)]);
 
   return (
-    <svg width="100%" height="100%" viewBox={`0 0 ${w} ${h + 16}`} preserveAspectRatio="xMidYMid meet" className="w-full h-40 sm:h-48 md:h-52 max-h-[220px] drop-shadow-[0_0_20px_rgba(251,146,60,0.45)] shrink min-h-0">
+    <svg width="100%" height="100%" viewBox={`0 0 ${w} ${h + 16}`} preserveAspectRatio="xMidYMid meet" className="w-full h-36 sm:h-44 md:h-52 max-h-[220px] drop-shadow-[0_0_20px_rgba(251,146,60,0.45)] shrink min-h-0">
       {[0, 0.33, 0.66, 1].map((ratio, i) => {
         const val = Math.round(minVal + ratio * span);
         const gy = toY(val);
@@ -531,7 +531,7 @@ function InteractivePieChart({ data, selectedIndex, onSelect }) {
   });
 
   return (
-    <svg width="100%" height="100%" viewBox="0 0 240 185" preserveAspectRatio="xMidYMid meet" className="w-full h-40 sm:h-48 md:h-52 max-h-[220px] drop-shadow-[0_0_20px_rgba(56,189,248,0.45)] shrink min-h-0">
+    <svg width="100%" height="100%" viewBox="0 0 240 185" preserveAspectRatio="xMidYMid meet" className="w-full h-36 sm:h-44 md:h-52 max-h-[220px] drop-shadow-[0_0_20px_rgba(56,189,248,0.45)] shrink min-h-0">
       {slices.map((s, i) => (
         <g key={i} onClick={() => onSelect && onSelect(i)} className="cursor-pointer group">
           <path
@@ -702,36 +702,67 @@ export function SimulatePhase({ muted, onNext }) {
   const s1Stats = getS1Stats();
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col items-center justify-center p-2 sm:p-3 md:p-4 relative overflow-hidden select-none z-10">
+    <div className="flex-1 min-h-0 w-full flex flex-col items-center justify-start md:justify-center p-2 sm:p-3 md:p-4 py-3 md:py-4 relative overflow-y-auto select-none z-10">
       <BgSymbols />
 
-      <div className="w-full max-w-6xl max-h-[96vh] h-full bg-[#160b36]/95 border-2 border-purple-400/40 rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-5 shadow-2xl backdrop-blur-md flex flex-col items-center fade-in-up z-20 my-auto overflow-hidden">
+      <div className="w-full max-w-6xl md:max-h-[96vh] md:h-full bg-[#160b36]/95 border-2 border-purple-400/40 rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 md:p-5 shadow-2xl backdrop-blur-md flex flex-col items-center fade-in-up z-20 my-auto overflow-hidden">
         {/* Decorative Pill */}
         <div className="w-20 h-1.5 bg-cyan-400 rounded-full mb-1.5 shadow-[0_0_14px_rgba(56,189,248,0.85)] shrink-0" />
 
         {/* Header */}
         <div className="w-full flex items-center justify-between mb-2 shrink-0">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             <span className="text-2xl sm:text-3xl">🧪</span>
             <div>
-              <h2 className="font-display font-900 text-lg sm:text-2xl text-white leading-tight">
+              <h2 className="font-display font-900 text-base sm:text-xl md:text-2xl text-white leading-tight">
                 Graph Detective Simulation Lab
               </h2>
-              <p className="text-[11px] sm:text-xs font-extrabold text-cyan-300">
+              <p className="text-[10px] sm:text-xs font-extrabold text-cyan-300">
                 28 Real-World Case Studies · Live Interactive Controls
               </p>
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 bg-[#10072b]/90 border border-purple-400/30 px-3 py-1 rounded-full text-xs font-black text-amber-300">
-            <span>🕵️ Detective Nova Active</span>
+          <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2 bg-[#10072b]/90 border border-purple-400/30 px-3 py-1 rounded-full text-xs font-black text-amber-300">
+              <span>🕵️ Detective Nova</span>
+            </div>
+            <button
+              onClick={onNext}
+              className="md:hidden btn-gold text-[11px] font-900 px-3 py-1 rounded-full flex items-center gap-1 shadow-md shrink-0 cursor-pointer"
+            >
+              <span>Practice 🎮</span>
+            </button>
           </div>
         </div>
 
+        {/* Mobile Station Selector Tabs (Horizontal Scrollable Strip) */}
+        <div className="flex md:hidden items-center gap-1.5 overflow-x-auto w-full pb-2 mb-1 scrollbar-none shrink-0">
+          {[
+            { id: 1, label: "Station 1", title: "Reader & Sandbox", icon: "🔎" },
+            { id: 2, label: "Station 2", title: "Spot the Trick", icon: "🕵️" },
+            { id: 3, label: "Station 3", title: "Graph Doctor", icon: "🧩" },
+            { id: 4, label: "Station 4", title: "Creator Studio", icon: "🎨" }
+          ].map(s => (
+            <button
+              key={s.id}
+              onClick={() => { playClickSound(muted); setStation(s.id); setActIdx(0); }}
+              className={`px-3 py-1.5 rounded-xl border-2 flex items-center gap-1.5 shrink-0 text-xs font-display font-900 transition-all cursor-pointer ${
+                station === s.id
+                  ? 'border-cyan-400 bg-[#1e2852] text-white shadow-[0_0_12px_rgba(56,189,248,0.4)] scale-102'
+                  : 'border-purple-500/25 bg-[#13082b]/80 text-slate-300'
+              }`}
+            >
+              <span>{s.icon}</span>
+              <span>{s.title}</span>
+            </button>
+          ))}
+        </div>
+
         {/* Main 2-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 w-full items-stretch flex-1 min-h-0 overflow-hidden">
-          {/* Sidebar Tabs */}
-          <div className="md:col-span-4 flex flex-col justify-between gap-1.5 sm:gap-2 shrink-0">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2.5 sm:gap-4 w-full items-stretch flex-1 min-h-0 overflow-hidden">
+          {/* Desktop Sidebar Tabs */}
+          <div className="hidden md:flex md:col-span-4 flex-col justify-between gap-1.5 sm:gap-2 shrink-0">
             <div className="flex flex-col gap-1.5 sm:gap-2">
               <button
                 onClick={() => { playClickSound(muted); setStation(1); setActIdx(0); }}
@@ -832,7 +863,7 @@ export function SimulatePhase({ muted, onNext }) {
           </div>
 
           {/* Main Interactive Work Area */}
-          <div className="md:col-span-8 bg-[#13092e]/95 border-2 border-purple-400/35 rounded-2xl sm:rounded-3xl p-3 sm:p-4 flex flex-col justify-between shadow-inner flex-1 min-h-0 overflow-hidden">
+          <div className="col-span-1 md:col-span-8 bg-[#13092e]/95 border-2 border-purple-400/35 rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 flex flex-col justify-between shadow-inner flex-1 min-h-0 overflow-y-auto md:overflow-hidden">
             <div className="flex flex-col flex-1 min-h-0 justify-between overflow-hidden">
               {/* Activity Header */}
               <div className="border-b border-white/15 pb-1.5 mb-1.5 shrink-0">
@@ -1101,7 +1132,7 @@ export function SimulatePhase({ muted, onNext }) {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-3 gap-1.5 w-full shrink-0">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 w-full shrink-0">
                     {currentActivity.options.map(opt => {
                       let cls = "bg-[#0e0626] border-2 border-purple-400/30 text-white hover:border-cyan-400";
                       if (pickedTrick) {
@@ -1113,7 +1144,7 @@ export function SimulatePhase({ muted, onNext }) {
                         <button
                           key={opt}
                           onClick={() => handlePickTrick(opt)}
-                          className={`px-2 py-1.5 rounded-lg font-display font-900 text-[11px] sm:text-xs transition cursor-pointer truncate ${cls}`}
+                          className={`px-2 py-1.5 rounded-lg font-display font-900 text-[11px] sm:text-xs transition cursor-pointer ${cls}`}
                         >
                           {opt}
                         </button>
@@ -1233,7 +1264,7 @@ export function SimulatePhase({ muted, onNext }) {
                     </div>
                   )}
 
-                  <div className="flex items-center gap-2 w-full justify-center shrink-0">
+                  <div className="flex flex-wrap items-center gap-2 w-full justify-center shrink-0">
                     <input
                       type="number"
                       placeholder={`Enter ${currentActivity.askLabel}`}

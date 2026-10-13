@@ -75,7 +75,7 @@ export function App() {
   };
 
   return (
-    <div className="app-container w-screen h-screen">
+    <div className="app-container w-full min-h-screen min-h-[100dvh]">
       {/* Top Navbar (Hidden on Intro Phase as requested) */}
       {phase !== 'intro' && (
         <TopNav
@@ -93,7 +93,7 @@ export function App() {
       )}
 
       {/* Main Viewport Content Area */}
-      <main className={`flex-1 min-h-0 flex flex-col relative overflow-hidden ${phase !== 'intro' ? 'pt-12' : ''}`}>
+      <main className={`flex-1 min-h-0 flex flex-col relative w-full ${phase !== 'intro' ? 'pt-16 sm:pt-20' : ''}`}>
         {phase === 'intro' && (
           <IntroModal onBegin={() => {
             resetProgress();

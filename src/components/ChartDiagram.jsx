@@ -18,7 +18,7 @@ export function ChartDiagram({ diagramData, size = 210 }) {
     const toY = v => h - pad - ((v - yMin) / (scaleTop - yMin)) * (h - pad * 1.5);
 
     return (
-      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`}>
+      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`} className="max-w-full h-auto drop-shadow-md">
         <line x1={pad} y1={h - pad} x2={w - 8} y2={h - pad} stroke="#94a3b8" strokeWidth="2" />
         <line x1={pad} y1="8" x2={pad} y2={h - pad} stroke="#94a3b8" strokeWidth="2" />
         {data.map((v, i) => {
@@ -47,7 +47,7 @@ export function ChartDiagram({ diagramData, size = 210 }) {
     const points = data.map((v, i) => [pad + i * stepX, toY(v)]);
 
     return (
-      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`}>
+      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`} className="max-w-full h-auto drop-shadow-md">
         <line x1={pad} y1={h - pad} x2={w - 8} y2={h - pad} stroke="#94a3b8" strokeWidth="2" />
         <line x1={pad} y1="8" x2={pad} y2={h - pad} stroke="#94a3b8" strokeWidth="2" />
         <polyline points={points.map(p => p.join(',')).join(' ')} fill="none" stroke="#fb923c" strokeWidth="3.5" strokeLinecap="round" />
@@ -82,7 +82,7 @@ export function ChartDiagram({ diagramData, size = 210 }) {
     });
 
     return (
-      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`}>
+      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`} className="max-w-full h-auto drop-shadow-md">
         {slices.map((s, i) => <path key={i} d={s.path} fill={s.color} stroke="#0c0424" strokeWidth="1.5" />)}
         {slices.map((s, i) => (
           <text key={i} x={s.lx} y={s.ly} fill="#e2e8f0" fontSize="10" fontWeight="900" textAnchor="middle">{s.label}</text>
@@ -116,7 +116,7 @@ export function ChartDiagram({ diagramData, size = 210 }) {
     };
 
     return (
-      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`}>
+      <svg width={w} height={h + 24} viewBox={`0 0 ${w} ${h + 24}`} className="max-w-full h-auto drop-shadow-md">
         {renderMini(dataA, yMinA, "#4ade80", 0, labelA)}
         {renderMini(dataB, yMinB, "#f43f5e", w / 2 + 6, labelB)}
       </svg>
